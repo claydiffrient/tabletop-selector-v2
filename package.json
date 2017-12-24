@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "test": "node ace test"
+    "test": "node ace test",
+    "frontend:dev": "parcel watch frontend/index.html --out-dir public --public-url ./"
   },
   "keywords": [
     "adonisjs",
@@ -24,11 +25,32 @@
     "@adonisjs/ignitor": "^1.0.14",
     "@adonisjs/lucid": "^4.1.1",
     "@adonisjs/vow": "^1.0.13",
+    "@instructure/babel-plugin-themeable-styles": "^4.5.0",
+    "@instructure/babel-plugin-transform-class-display-name": "^4.5.0",
+    "@instructure/postcss-themeable-styles": "^4.5.0",
+    "@instructure/ui-core": "^4.5.0",
+    "@instructure/ui-presets": "^4.5.0",
+    "@instructure/ui-themeable": "^4.5.0",
+    "@instructure/ui-themes": "^4.5.0",
+    "autoprefixer": "^7.2.3",
+    "babel-cli": "^6.26.0",
     "eslint": "^4.13.1",
     "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-react": "^7.5.1",
+    "postcss-modules": "^1.1.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-router-dom": "^4.2.2",
     "sqlite3": "^3.1.13"
   },
   "autoload": {
     "App": "./app"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "eslint-plugin-prettier": "^2.4.0",
+    "parcel-bundler": "^1.3.0",
+    "prettier": "^1.9.2"
   }
 }

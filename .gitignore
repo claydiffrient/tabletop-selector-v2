@@ -9,3 +9,9 @@ tmp
 
 # The development sqlite file
 database/development.sqlite
+
+# Parcel's cache
+.cache
+
+# Built code
+public/*

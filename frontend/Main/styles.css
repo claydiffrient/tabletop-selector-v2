@@ -1,0 +1,5 @@
+.root {
+  background-color: var(--bgColor);
+  height: 100vh;
+  padding-top: 0.75rem;
+}

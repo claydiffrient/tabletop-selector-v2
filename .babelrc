@@ -1,0 +1,12 @@
+{
+  "presets": ["env", "react"],
+  "plugins": [
+    "@instructure/babel-plugin-transform-class-display-name",
+    [
+      "@instructure/babel-plugin-themeable-styles",
+      {
+        "ignore": "node_modules/**/*"
+      }
+    ]
+  ]
+}
