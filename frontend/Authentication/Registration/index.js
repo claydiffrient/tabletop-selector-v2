@@ -18,8 +18,22 @@ class Registration extends Component {
     confirmPassword: ""
   };
 
+  passwordsMatch = () => {
+    if (!this.state.password.length || !this.state.confirmPassword.length) {
+      return true;
+    }
+    return (
+      this.state.password.length > 0 &&
+      this.state.confirmPassword.length > 0 &&
+      this.state.password === this.state.confirmPassword
+    );
+  };
+
   handleSubmit = e => {
     e.preventDefault();
+    if (!this.passwordsMatch()) {
+      return false;
+    }
     axios
       .post("/users/register", {
         email: this.state.email,
@@ -52,6 +66,15 @@ class Registration extends Component {
     if (isAuthorized() || this.state.authorized) {
       return <Redirect to="/home" push />;
     }
+    const passwordMessages = [];
+    let formError = false;
+    if (!this.passwordsMatch()) {
+      passwordMessages.push({
+        text: "Passwords do not match",
+        type: "error"
+      });
+      formError = true;
+    }
 
     return (
       <Container as="div" padding="small">
@@ -79,6 +102,7 @@ class Registration extends Component {
             label="Password"
             value={this.state.password}
             onChange={this.handleChange}
+            messages={passwordMessages}
           />
           <TextInput
             name="confirmPassword"
@@ -86,6 +110,7 @@ class Registration extends Component {
             type="password"
             value={this.state.confirmPassword}
             onChange={this.handleChange}
+            messages={passwordMessages}
           />
           <Container align="center" margin="small 0 0 0" as="div">
             <Button
@@ -95,7 +120,12 @@ class Registration extends Component {
             >
               Reset
             </Button>
-            <Button type="submit" variant="primary" margin="0 0 0 xxx-small">
+            <Button
+              disabled={formError}
+              type="submit"
+              variant="primary"
+              margin="0 0 0 xxx-small"
+            >
               Submit
             </Button>
           </Container>
