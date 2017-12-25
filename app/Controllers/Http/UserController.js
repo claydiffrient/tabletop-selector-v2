@@ -35,7 +35,7 @@ class UserController {
 
   async login({ request, auth }) {
     const { email, password } = request.post();
-    const jwt = await auth.attempt(email, password);
+    const jwt = await auth.attempt(email, password, true);
     return jwt;
   }
 
@@ -43,7 +43,7 @@ class UserController {
     const body = request.post();
     const user = await User.create(body);
     const { email, password } = body;
-    const jwt = await auth.attempt(email, password);
+    const jwt = await auth.attempt(email, password, true);
     return jwt;
   }
 }

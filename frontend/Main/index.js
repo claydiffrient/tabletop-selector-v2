@@ -3,6 +3,7 @@ import themeable from "@instructure/ui-themeable";
 import styles from "./styles.css";
 import theme from "./theme.js";
 import Authentication from "../Authentication";
+import Home from "../Home";
 import Heading from "@instructure/ui-core/lib/components/Heading";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
@@ -16,6 +17,7 @@ class Main extends Component {
         <Router>
           <Switch>
             <Route exact path="/" component={Authentication} />
+            <Route path="/home" component={Home} />
           </Switch>
         </Router>
       </div>
