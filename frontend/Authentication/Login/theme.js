@@ -1,3 +1,3 @@
-export default function generator({ colors }) {
+export default function generator() {
   return {};
 }

@@ -4,6 +4,7 @@ import styles from "./styles.css";
 import theme from "./theme.js";
 import Text from "@instructure/ui-core/lib/components/Text";
 import Login from "./Login";
+import Registration from "./Registration";
 import Grid, {
   GridCol,
   GridRow
@@ -18,7 +19,7 @@ class Authentication extends Component {
             <Login />
           </GridCol>
           <GridCol>
-            <Text>Column B</Text>
+            <Registration />
           </GridCol>
         </GridRow>
       </Grid>
