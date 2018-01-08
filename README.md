@@ -1,9 +1,16 @@
-# Adonis Slim App
+# Tabletop Selector v2
 
-The Adonis slim app is the tinest boilerplate to create Adonisjs applications with minimal footprint and you get all the goodies of Adonis IoC container, autoloading, ace commands etc.
+**Disclaimer:** At this point this repository is not production ready. It's mostly for me learning.
 
-## What's next?
+## Development
 
-This project structure can scale as you go, simply execute the `ace` commands to create **Controllers**, **Models**, etc for you. 
+```bash
+npm install
+adonis serve --dev  # starts up the backend server in dev mode
+frontend:dev # starts up the frontend in watch mode
+```
 
-Also make sure to read the [guides](http://dev.adonisjs.com/docs/4.0/installation)
+## Things Being Learned
+
+* AdonisJS
+* Parcel
