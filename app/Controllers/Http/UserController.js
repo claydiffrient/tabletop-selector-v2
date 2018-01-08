@@ -1,20 +1,26 @@
 "use strict";
 
-const User = use("App/Models/User");
-
 class UserController {
+  static get inject() {
+    return ["App/Models/User"];
+  }
+
+  constructor(User) {
+    this.User = User;
+  }
+
   async index({ request }) {
-    return await User.all();
+    return await this.User.all();
   }
 
   async store({ request, response }) {
     const body = request.post();
-    const user = await User.create(body);
+    const user = await this.User.create(body);
     response.status(201).send(user);
   }
 
   async show({ params }) {
-    return await User.findOrFail(params.id);
+    return this.User.findOrFail(params.id);
   }
 
   async update({ request, params }) {
@@ -22,14 +28,14 @@ class UserController {
     delete body.password;
     delete body.created_at;
     delete body.updated_at;
-    const user = await User.findOrFail(params.id);
+    const user = await this.User.findOrFail(params.id);
     user.merge(body);
     await user.save();
     return user;
   }
 
   async destroy({ request, params }) {
-    const user = await User.find(params.id);
+    const user = await this.User.find(params.id);
     await user.delete();
   }
 
@@ -41,7 +47,7 @@ class UserController {
 
   async register({ request, auth }) {
     const body = request.post();
-    const user = await User.create(body);
+    await this.User.create(body);
     const { email, password } = body;
     const jwt = await auth.attempt(email, password, true);
     return jwt;
